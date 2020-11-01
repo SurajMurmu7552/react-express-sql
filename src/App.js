@@ -8,6 +8,7 @@ import UpdateData from "./components/UpdateData";
 import DelData from "./components/DelData";
 import StudentSection from "./components/StudentSection";
 import Header from "./components/Header";
+import CreateDb from "./components/CreateDb";
 
 export class App extends Component {
   state = {
@@ -48,31 +49,19 @@ export class App extends Component {
     this.setState({ button: e.target.value });
   };
 
-  modifyData = () => {
-    const btn = this.state.button;
-    if (btn === "Add") {
-      console.log("adding data");
-      this.addData();
-    } else if (btn === "Update") {
-      console.log("entered update");
-    } else if (btn === "Delete") {
-      fetch(
-        `http://localhost:4000/data/${this.state.branch}/delete?roll=${this.state.roll}`
-      )
-        .then(this.getData)
-        .catch((err) => console.log(err));
-    }
-  };
-
   render() {
     return (
       <div className="App">
         <Router>
           <Header />
+          <Route path="/">
+            <CreateDb />
+          </Route>
           <Route exact path="/student">
             <StudentSection branch={this.state.branch} />
           </Route>
           <Route exact path="/teacher">
+            <h2>student info</h2>
             <form onSubmit={this.getData}>
               <label>
                 Branch
@@ -85,38 +74,13 @@ export class App extends Component {
               <input type="submit" value="Submit" />
             </form>
 
-            <div>
-              <h2>student info</h2>
-              {this.state.studentinfo.map(this.readInfo)}
-            </div>
+            <div>{this.state.studentinfo.map(this.readInfo)}</div>
 
             <AddData branch={this.state.branch} getData={this.getData} />
             <UpdateData branch={this.state.branch} getData={this.getData} />
             <DelData branch={this.state.branch} getData={this.getData} />
           </Route>
         </Router>
-        {/* <StudentSection branch={this.state.branch} />
-
-        <form onSubmit={this.getData}>
-          <label>
-            Branch
-            <input
-              type="text"
-              value={this.state.branch}
-              onChange={this.branchChange}
-            />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
-
-        <div>
-          <h2>student info</h2>
-          {this.state.studentinfo.map(this.readInfo)}
-        </div>
-
-        <AddData branch={this.state.branch} getData={this.getData} />
-        <UpdateData branch={this.state.branch} getData={this.getData} />
-        <DelData branch={this.state.branch} getData={this.getData} /> */}
       </div>
     );
   }
