@@ -2,6 +2,7 @@
 
 ## start app
 $npm install
+
 $npm start
 
 ## start server
