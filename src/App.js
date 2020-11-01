@@ -54,7 +54,7 @@ export class App extends Component {
       <div className="App">
         <Router>
           <Header />
-          <Route path="/">
+          <Route exact path="/">
             <CreateDb />
           </Route>
           <Route exact path="/student">
