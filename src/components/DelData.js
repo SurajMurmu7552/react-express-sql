@@ -10,7 +10,7 @@ export class DelData extends Component {
     fetch(
       `http://localhost:4000/data/${this.props.branch}/delete?roll=${this.state.roll}`
     )
-      .then(this.props.getData)
+      .then(this.props.getData).then(`student ${this.state.roll} deleted`)
       .catch((err) => console.log(err));
   };
 

@@ -60,6 +60,7 @@ export class UpdateData extends Component {
       `http://localhost:4000/data/${this.props.branch}/update?roll=${this.state.roll}&name=${this.state.student.name}&cls=${this.state.student.cls}&birthday=${this.state.student.birthdate}&email=${this.state.student.email}&contact=${this.state.student.contact}`
     )
       .then(this.props.getData)
+      .then(`student ${this.state.roll} updated`)
       .catch((err) => console.log(err));
     e.preventDefault();
   };

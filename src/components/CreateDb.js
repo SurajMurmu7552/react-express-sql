@@ -20,7 +20,7 @@ export class CreateDb extends Component {
   createBranch = (e) => {
     e.preventDefault();
     fetch(`http://localhost:4000/createtable/${this.state.branch}`)
-      .then(console.log(`branch ${this.state.branch} is created`))
+      .then(console.log(`branch ${this.state.branch} is created`),alert(`branch ${this.state.branch} is created`))
       .catch((err) => {
         console.log(err);
       });
@@ -29,13 +29,13 @@ export class CreateDb extends Component {
   render() {
     return (
       <div>
-        <form>
+        {/* <form>
           <label>Create Database</label>
           <input type="submit" value="Create" onClick={this.createDb} />
-        </form>
+        </form> */}
         <form>
           <label>
-            Branch
+            Create Branch
             <input
               type="text"
               value={this.state.branch}

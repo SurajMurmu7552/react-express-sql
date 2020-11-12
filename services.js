@@ -6,35 +6,40 @@ const app = express();
 
 app.use(cors());
 
-var db = mysql.createConnection({
+// var db = mysql.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   password: "",
+//   database: "",
+// });
+
+// db.connect((err) => {
+//   if (err) console.log("cannot connect to db");
+//   else console.log("connected to db");
+// });
+
+//create database
+// app.get("/createdb", (req, res) => {
+//   const sql = "CREATE DATABASE studentinfo";
+//   db.query(sql, (err, result) => {
+//     if (err) throw err;
+//     else {
+//       console.log(result);
+//       res.send("database created");
+//     }
+//   });
+// });
+
+const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "",
+  database: "studentinfo",
 });
 
 db.connect((err) => {
   if (err) console.log("cannot connect to db");
   else console.log("connected to db");
-});
-
-//create database
-app.get("/createdb", (req, res) => {
-  let sql = "CREATE DATABASE studentinfo";
-  db.query(sql, (err, result) => {
-    if (err) throw err;
-    else {
-      console.log("database created");
-      res.send("database created");
-    }
-  });
-});
-
-db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "studentinfo",
 });
 
 //create table

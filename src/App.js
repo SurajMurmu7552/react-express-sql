@@ -75,6 +75,7 @@ export class App extends Component {
             </form>
 
             <div>{this.state.studentinfo.map(this.readInfo)}</div>
+            
 
             <AddData branch={this.state.branch} getData={this.getData} />
             <UpdateData branch={this.state.branch} getData={this.getData} />

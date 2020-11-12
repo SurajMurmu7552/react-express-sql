@@ -53,8 +53,17 @@ export class AddData extends Component {
       `http://localhost:4000/data/${this.props.branch}/add?roll=${this.state.student.roll}&name=${this.state.student.name}&cls=${this.state.student.cls}&birthday=${this.state.student.birthdate}&email=${this.state.student.email}&contact=${this.state.student.contact}`
     )
       .then(this.props.getData)
+      .then(alert(`student ${this.state.student.roll} created`))
+      .then(this.setState({student:{
+        roll: "",
+        name: "",
+        cls: "",
+        birthdate: "",
+        email: "",
+        contact: "",
+      }}))
       .catch((err) => console.log(err));
-    e.preventDefault();
+      e.preventDefault();
   };
 
   render() {
